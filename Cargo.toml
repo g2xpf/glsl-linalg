@@ -1,0 +1,19 @@
+[package]
+name = "glsl-linalg"
+version = "0.1.0"
+authors = ["g2_xpf <nameko.jack@gmail.com>"]
+edition = "2018"
+
+description = """
+glsl-linalg is the vector/matrix library for Rust.
+"""
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/g2xpf/glsl-linalg"
+build = false
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+]
+
+[dependencies]
