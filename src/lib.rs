@@ -1,4 +1,6 @@
 pub mod float;
+#[macro_use]
+pub mod macros;
 pub mod matrix;
 pub mod numeric;
 pub mod vector;
