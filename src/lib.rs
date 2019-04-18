@@ -5,5 +5,5 @@ pub mod matrix;
 pub mod numeric;
 pub mod vector;
 
-pub use self::vector::{V2, V3, V4};
-pub use self::matrix::{M2, M3, M4};
+pub use self::matrix::{FloatMatrix, Matrix, M2, M3, M4};
+pub use self::vector::{FloatVector, Vector, V2, V3, V4};

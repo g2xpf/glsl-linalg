@@ -10,6 +10,7 @@ where
 {
     type Target = [[T; 4]; 4];
 
+    #[inline]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
@@ -19,6 +20,7 @@ impl<T> DerefMut for M4<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
     }
@@ -28,6 +30,7 @@ impl<T> IntoVectors<(V4<T>, V4<T>, V4<T>, V4<T>)> for M4<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn into_cols(&self) -> (V4<T>, V4<T>, V4<T>, V4<T>) {
         (
             V4([self[0][0], self[1][0], self[2][0], self[3][0]]),
@@ -37,6 +40,7 @@ where
         )
     }
 
+    #[inline]
     fn into_rows(&self) -> (V4<T>, V4<T>, V4<T>, V4<T>) {
         (V4(self[0]), V4(self[1]), V4(self[2]), V4(self[3]))
     }
@@ -46,6 +50,7 @@ impl<T> FromVectors<(V4<T>, V4<T>, V4<T>, V4<T>)> for M4<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn from_cols(v: (V4<T>, V4<T>, V4<T>, V4<T>)) -> Self {
         let (r1, r2, r3, r4) = v;
         M4([
@@ -56,6 +61,7 @@ where
         ])
     }
 
+    #[inline]
     fn from_rows(v: (V4<T>, V4<T>, V4<T>, V4<T>)) -> Self {
         let (V4(c1), V4(c2), V4(c3), V4(c4)) = v;
         M4([c1, c2, c3, c4])
@@ -66,6 +72,7 @@ impl<T> Matrix for M4<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn transpose(&mut self) {
         unsafe {
             (&mut self[0][1] as *mut T).swap(&mut self[1][0]);
@@ -82,6 +89,7 @@ impl<F> FloatMatrix<F> for M4<F>
 where
     F: Float,
 {
+    #[inline]
     fn determinant(&self) -> F {
         self[0][3] * self[1][2] * self[2][1] * self[3][0]
             - self[0][2] * self[1][3] * self[2][1] * self[3][0]
@@ -217,6 +225,7 @@ where
 {
     type Output = M4<T>;
 
+    #[inline]
     fn add(self, rhs: Self) -> Self::Output {
         M4([
             [
@@ -253,6 +262,7 @@ where
 {
     type Output = M4<T>;
 
+    #[inline]
     fn sub(self, rhs: Self) -> Self::Output {
         M4([
             [
@@ -289,6 +299,7 @@ where
 {
     type Output = M4<T>;
 
+    #[inline]
     fn mul(self, rhs: Self) -> Self::Output {
         let (c1, c2, c3, c4) = self.into_rows();
         let (r1, r2, r3, r4) = rhs.into_cols();
@@ -307,6 +318,7 @@ where
 {
     type Output = V4<T>;
 
+    #[inline]
     fn mul(self, rhs: V4<T>) -> Self::Output {
         let (c1, c2, c3, c4) = self.into_rows();
         V4([c1.dot(rhs), c2.dot(rhs), c3.dot(rhs), c4.dot(rhs)])
@@ -319,6 +331,7 @@ where
 {
     type Output = M4<T>;
 
+    #[inline]
     fn div(self, rhs: T) -> Self::Output {
         M4([
             [

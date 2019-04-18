@@ -27,12 +27,17 @@ where
     F: Float,
     Self: Clone + Div<F, Output = Self> + Sub<Output = Self>,
 {
+    #[inline]
     fn length(&self) -> F {
         self.dot(self.clone()).f_sqrt()
     }
+
+    #[inline]
     fn normalize(&self) -> Self {
         self.clone() / self.length()
     }
+
+    #[inline]
     fn distance(&self, rhs: &Self) -> F {
         (self.clone() - rhs.clone()).length()
     }

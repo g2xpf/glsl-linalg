@@ -24,7 +24,9 @@ where
     Self: Clone + Div<F, Output = Self>,
 {
     fn determinant(&self) -> F;
+    #[inline]
     fn cofactor(&self) -> Self;
+    #[inline]
     fn inverse(&self) -> Self {
         self.cofactor() / self.determinant()
     }

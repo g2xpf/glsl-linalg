@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate glsl_linalg;
 
-use glsl_linalg::matrix::{FloatMatrix, Matrix};
+use glsl_linalg::{FloatMatrix, Matrix};
 
 #[test]
 fn m_div_f() {

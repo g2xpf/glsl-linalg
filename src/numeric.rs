@@ -19,6 +19,7 @@ macro_rules! impl_mul {
         impl std::ops::Mul<V2<$t>> for $t {
             type Output = V2<$t>;
 
+            #[inline]
             fn mul(self, rhs: V2<$t>) -> Self::Output {
                 V2([self * rhs[0], self * rhs[1]])
             }
@@ -27,6 +28,7 @@ macro_rules! impl_mul {
         impl std::ops::Mul<V3<$t>> for $t {
             type Output = V3<$t>;
 
+            #[inline]
             fn mul(self, rhs: V3<$t>) -> Self::Output {
                 V3([self * rhs[0], self * rhs[1], self * rhs[2]])
             }
@@ -35,6 +37,7 @@ macro_rules! impl_mul {
         impl std::ops::Mul<V4<$t>> for $t {
             type Output = V4<$t>;
 
+            #[inline]
             fn mul(self, rhs: V4<$t>) -> Self::Output {
                 V4([self * rhs[0], self * rhs[1], self * rhs[2], self * rhs[3]])
             }
@@ -43,6 +46,7 @@ macro_rules! impl_mul {
         impl std::ops::Mul<M2<$t>> for $t {
             type Output = M2<$t>;
 
+            #[inline]
             fn mul(self, rhs: M2<$t>) -> Self::Output {
                 M2([
                     [self * rhs[0][0], self * rhs[0][1]],
@@ -54,6 +58,7 @@ macro_rules! impl_mul {
         impl std::ops::Mul<M3<$t>> for $t {
             type Output = M3<$t>;
 
+            #[inline]
             fn mul(self, rhs: M3<$t>) -> Self::Output {
                 M3([
                     [self * rhs[0][0], self * rhs[0][1], self * rhs[0][2]],
@@ -66,6 +71,7 @@ macro_rules! impl_mul {
         impl std::ops::Mul<M4<$t>> for $t {
             type Output = M4<$t>;
 
+            #[inline]
             fn mul(self, rhs: M4<$t>) -> Self::Output {
                 M4([
                     [

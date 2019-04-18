@@ -10,6 +10,7 @@ pub trait Finalizer<T> {
 macro_rules! impl_identity_finalizer {
     ($tt: tt) => {
         impl<T> Finalizer<$tt<T>> for $tt<T> {
+            #[inline]
             fn finalize(self) -> $tt<T> {
                 self
             }
@@ -28,6 +29,7 @@ impl<T> Finalizer<V2<T>> for V1<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> V2<T> {
         V2([*self; 2])
     }
@@ -37,6 +39,7 @@ impl<T> Finalizer<V3<T>> for V1<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> V3<T> {
         V3([*self; 3])
     }
@@ -46,6 +49,7 @@ impl<T> Finalizer<V4<T>> for V1<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> V4<T> {
         V4([*self; 4])
     }
@@ -55,6 +59,7 @@ impl<T> Finalizer<M2<T>> for V1<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> M2<T> {
         M2([[*self; 2], [*self; 2]])
     }
@@ -64,6 +69,7 @@ impl<T> Finalizer<M3<T>> for V1<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> M3<T> {
         M3([[*self; 3], [*self; 3], [*self; 3]])
     }
@@ -73,6 +79,7 @@ impl<T> Finalizer<M4<T>> for V1<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> M4<T> {
         M4([[*self; 4], [*self; 4], [*self; 4], [*self; 4]])
     }
@@ -82,6 +89,7 @@ impl<T> Finalizer<V2<T>> for V3<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> V2<T> {
         let s = &self;
         V2([s[0], s[1]])
@@ -92,6 +100,7 @@ impl<T> Finalizer<V2<T>> for V4<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> V2<T> {
         let s = &self;
         V2([s[0], s[1]])
@@ -102,6 +111,7 @@ impl<T> Finalizer<V3<T>> for V4<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn finalize(self) -> V3<T> {
         let s = &self;
         V3([s[0], s[1], s[2]])

@@ -10,6 +10,7 @@ where
 {
     type Target = [T; 2];
 
+    #[inline]
     fn deref(&self) -> &Self::Target {
         &self.0
     }
@@ -19,6 +20,7 @@ impl<T> Vector<T> for V2<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn dot(&self, rhs: Self) -> T {
         self[0] * rhs[0] + self[1] * rhs[1]
     }
@@ -30,6 +32,7 @@ impl<T> Cross<T> for V2<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn cross(&self, rhs: Self) -> V3<T> {
         let default: T = Default::default();
         V3([default, default, self[0] * rhs[1] - self[1] * rhs[0]])
@@ -42,6 +45,7 @@ where
 {
     type Output = V2<T>;
 
+    #[inline]
     fn add(self, rhs: Self) -> Self::Output {
         V2([self[0] + rhs[0], self[1] + rhs[1]])
     }
@@ -53,6 +57,7 @@ where
 {
     type Output = V2<T>;
 
+    #[inline]
     fn sub(self, rhs: Self) -> Self::Output {
         V2([self[0] - rhs[0], self[1] - rhs[1]])
     }
@@ -64,6 +69,7 @@ where
 {
     type Output = V2<T>;
 
+    #[inline]
     fn mul(self, rhs: Self) -> Self::Output {
         V2([self[0] * rhs[0], self[1] * rhs[1]])
     }
@@ -75,6 +81,7 @@ where
 {
     type Output = V2<T>;
 
+    #[inline]
     fn mul(self, rhs: T) -> Self::Output {
         V2([self[0] * rhs, self[1] * rhs])
     }
@@ -86,6 +93,7 @@ where
 {
     type Output = V2<T>;
 
+    #[inline]
     fn mul(self, rhs: M2<T>) -> Self::Output {
         V2([
             self[0] * rhs[0][0] + self[1] * rhs[1][0],
@@ -99,6 +107,8 @@ where
     T: Numeric,
 {
     type Output = V2<T>;
+
+    #[inline]
     fn div(self, rhs: Self) -> Self::Output {
         V2([self[0] / rhs[0], self[1] / rhs[1]])
     }
@@ -110,6 +120,7 @@ where
 {
     type Output = V2<T>;
 
+    #[inline]
     fn div(self, rhs: T) -> Self::Output {
         V2([self[0] / rhs, self[1] / rhs])
     }

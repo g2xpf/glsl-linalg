@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate glsl_linalg;
 
-use glsl_linalg::vector::{FloatVector, Vector};
+use glsl_linalg::{FloatVector, Vector};
 
 #[test]
 fn v_mul_f() {

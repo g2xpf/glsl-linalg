@@ -19,6 +19,7 @@ impl<T> Vector<T> for V4<T>
 where
     T: Numeric,
 {
+    #[inline]
     fn dot(&self, rhs: Self) -> T {
         self[0] * rhs[0] + self[1] * rhs[1] + self[2] * rhs[2] + self[3] * rhs[3]
     }
@@ -32,6 +33,7 @@ where
 {
     type Output = V4<T>;
 
+    #[inline]
     fn add(self, rhs: Self) -> Self::Output {
         V4([
             self[0] + rhs[0],
@@ -48,6 +50,7 @@ where
 {
     type Output = V4<T>;
 
+    #[inline]
     fn sub(self, rhs: Self) -> Self::Output {
         V4([
             self[0] - rhs[0],
@@ -64,6 +67,7 @@ where
 {
     type Output = V4<T>;
 
+    #[inline]
     fn mul(self, rhs: Self) -> Self::Output {
         V4([
             self[0] * rhs[0],
@@ -80,6 +84,7 @@ where
 {
     type Output = V4<T>;
 
+    #[inline]
     fn mul(self, rhs: T) -> Self::Output {
         V4([self[0] * rhs, self[1] * rhs, self[2] * rhs, self[3] * rhs])
     }
@@ -91,6 +96,7 @@ where
 {
     type Output = V4<T>;
 
+    #[inline]
     fn mul(self, rhs: M4<T>) -> Self::Output {
         V4([
             self[0] * rhs[0][0] + self[1] * rhs[1][0] + self[2] * rhs[2][0] + self[3] * rhs[3][0],
@@ -106,6 +112,8 @@ where
     T: Numeric,
 {
     type Output = V4<T>;
+
+    #[inline]
     fn div(self, rhs: Self) -> Self::Output {
         V4([
             self[0] / rhs[0],
@@ -121,6 +129,8 @@ where
     T: Numeric,
 {
     type Output = V4<T>;
+
+    #[inline]
     fn div(self, rhs: T) -> Self::Output {
         V4([self[0] / rhs, self[1] / rhs, self[2] / rhs, self[3] / rhs])
     }
